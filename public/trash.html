@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trash</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-ZvpUoO/+P5yB/PVQn4qD7q/QffZB6Rc4hpHf1F6/v+SYHDC0L/4Ct9cpXlL7y7R" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</head>
+<body class="cardbg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <i class="mr-2 logo-icon fa-solid fa-note-sticky"></i>
+                    <a class="navbar-brand" href="index.html">Notes</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav ml-auto">
+                            <div class="d-flex flex-row justify-content-end">
+                                <div class="ml-3 mt-1">
+                                    <a href="/login" class="btn btn-outline-success">Login</a>
+                                </div>
+                                <div class="ml-3 mt-1">
+                                    <a href="/register" class="btn btn-outline-success">Sign up</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-2">
+                <a href="index.html"><div class="mt-3 menu-item">
+                    <i class="mt-1 fa-solid fa-lightbulb"></i>
+                    <h5 class="ml-4">Notes</h5>
+                </div></a>
+                <a href="archive.html">
+                <div class="mt-3 menu-item">
+                    <i class="mt-1 fa-solid fa-box-archive"></i>
+                    <h5 class="ml-4">Archive</h5>
+                </div></a>
+                <a href="trash.html">
+                <div class="mt-3 menu-item">
+                    <i class="mt-1 fa-solid fa-trash"></i>
+                    <h5 class="ml-4">Trash</h5>
+                </div></a>
+            </div>
+            <div class="col-md-10">
+                <h1>Deleted Notes</h1>
+        <div id="deletedNotes"></div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const deletedNotesContainer = document.getElementById('deletedNotes');
+            const deletedNote = JSON.parse(localStorage.getItem('deletedNote'));
+
+            if (deletedNote) {
+                const noteCard = document.createElement('div');
+                noteCard.classList.add('noteCard');
+                noteCard.innerHTML = `
+                    <h3>${deletedNote.title}</h3>
+                    <p>${deletedNote.desc}</p>
+                `;
+                deletedNotesContainer.appendChild(noteCard);
+
+                // Clear localStorage after displaying
+                localStorage.removeItem('deletedNote');
+            } else {
+                deletedNotesContainer.innerHTML = '<p>No deleted notes found.</p>';
+            }
+        });
+    </script>
+</body>
+</html>

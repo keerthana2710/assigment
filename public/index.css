@@ -1,0 +1,60 @@
+.cardbg{  
+    background-image:url(bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.menu-item{
+    display: flex;
+}
+.menu-item:hover{
+    margin-left: 5px;
+    padding-left: 5px;
+    background-color: EEEEEE;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: 4vh;
+}
+.cardsContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.noteCard{
+    border-radius: 10px;
+    padding:10px;
+    height: 150px;
+    margin: 30px;
+    width:200px;
+    border:1px solid black;
+}
+
+#title {
+  width: 50%; 
+  height: 30px; 
+}
+
+#desc {
+  width: 50%;
+  height: 100px; 
+}
+
+.noteCard {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .noteCard h3 {
+    margin: 0 0 10px 0;
+  }
+  
+  .noteCard p {
+    margin: 0 0 10px 0;
+  }
+  
+  .noteCard .btn {
+    margin-right: 5px;
+  }
